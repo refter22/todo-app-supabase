@@ -1,45 +1,34 @@
-import React, { Component, FormEvent } from 'react'
+import React, { useState, FormEvent } from 'react'
 import styles from './ToDoForm.module.css'
 
 interface ToDoFormProps {
   addTodo: (text: string) => void
 }
 
-interface ToDoFormState {
-  text: string
-}
+const ToDoForm: React.FC<ToDoFormProps> = ({ addTodo }) => {
+  const [text, setText] = useState('')
 
-class ToDoForm extends Component<ToDoFormProps, ToDoFormState> {
-  constructor(props: ToDoFormProps) {
-    super(props)
-    this.state = {
-      text: ''
-    }
-  }
-
-  handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!this.state.text.trim()) return
-    this.props.addTodo(this.state.text)
-    this.setState({ text: '' })
+    if (!text.trim()) return
+    addTodo(text)
+    setText('')
   }
 
-  render() {
-    return (
-      <form className={styles.form} onSubmit={this.handleSubmit}>
-        <input
-          className={styles.input}
-          type='text'
-          value={this.state.text}
-          onChange={(e) => this.setState({ text: e.target.value })}
-          placeholder='Добавить новую задачу'
-        />
-        <button className={styles.button} type='submit'>
-          Добавить
-        </button>
-      </form>
-    )
-  }
+  return (
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <input
+        className={styles.input}
+        type='text'
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder='Добавить новую задачу'
+      />
+      <button className={styles.button} type='submit'>
+        Добавить
+      </button>
+    </form>
+  )
 }
 
 export default ToDoForm
