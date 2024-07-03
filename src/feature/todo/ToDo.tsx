@@ -14,7 +14,7 @@ import { todoApi } from '../../api/todoApi'
 import ToDoForm from './ToDoForm'
 import ToDoItem from './ToDoItem'
 import styles from './ToDo.module.css'
-import Loader from '../../components/Loader'
+import Loader from '../../components/Loader/Loader'
 
 const ToDo: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()

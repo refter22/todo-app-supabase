@@ -7,9 +7,12 @@ import UserInfo from './feature/auth/UserInfo'
 import { supabase } from './supabase'
 import './App.css'
 import { Session } from '@supabase/supabase-js'
+import { useTheme } from './hooks/useTheme'
+import ThemeToggleIcon from './components/icons/ThemeToggleIcon'
 
 const App: React.FC = () => {
   const [session, setSession] = useState<Session | null>(null)
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -24,6 +27,13 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <div className='App'>
+        <button
+          className='theme-toggle'
+          onClick={toggleTheme}
+          aria-label='Переключить тему'
+        >
+          <ThemeToggleIcon theme={theme} />
+        </button>
         {session && <UserInfo email={session.user?.email} />}
         {session ? <ToDo /> : <Auth />}
       </div>

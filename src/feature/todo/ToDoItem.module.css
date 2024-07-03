@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background-color: #f5f5f5;
+  background-color: var(--todo-item-background);
   border-radius: 4px;
   margin-bottom: 10px;
   transition: background-color 0.3s, transform 0.2s ease-in-out,
@@ -14,7 +14,7 @@
 }
 
 .item:hover {
-  background-color: #e0e0e0;
+  background-color: var(--todo-item-hover-background);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
@@ -34,6 +34,7 @@
   cursor: pointer;
   font-size: 16px;
   user-select: none;
+  color: var(--text-color);
 }
 
 .checkboxLabel:before {
@@ -44,13 +45,21 @@
   transform: translateY(-50%);
   width: 25px;
   height: 25px;
-  border: 2px solid #2196f3;
+  border: 2px solid var(--button-background);
   border-radius: 4px;
-  background-color: #fff;
+  background-color: var(--container-background);
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
 .checkbox:checked + .checkboxLabel:before {
-  background-color: #2196f3;
+  background-color: var(--button-background);
 }
 
 .checkboxLabel:after {
@@ -59,10 +68,10 @@
   display: none;
   left: 9px;
   top: 50%;
-  transform: translateY(-70%) rotate(45deg);
+  transform: translate(20%, -60%) rotate(45deg);
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid var(--button-color);
   border-width: 0 3px 3px 0;
 }
 
@@ -74,100 +83,22 @@
   font-size: 16px;
   word-break: break-word;
   margin-left: 10px;
-}
-
-@media (max-width: 480px) {
-  .todoContent {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .text {
-    font-size: 14px;
-  }
-
-  .checkboxLabel:before {
-    width: 20px;
-    height: 20px;
-  }
-
-  .checkboxLabel:after {
-    left: 7px;
-    top: 3px;
-    width: 4px;
-    height: 8px;
-  }
-}
-
-.checkbox {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkboxLabel {
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-  font-size: 16px;
-  user-select: none;
-  display: inline-block;
-}
-
-.checkboxLabel:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 25px;
-  height: 25px;
-  border: 2px solid #2196f3;
-  border-radius: 4px;
-  background-color: #fff;
-}
-
-.checkbox:checked + .checkboxLabel:before {
-  background-color: #2196f3;
-}
-
-.checkboxLabel:after {
-  content: '';
-  position: absolute;
-  display: none;
-  left: 50%;
-  top: 50%;
-  transform: translate(-84%, -63%) rotate(45deg);
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-}
-
-.checkbox:checked + .checkboxLabel:after {
-  display: block;
-}
-
-.checkbox:disabled + .checkboxLabel:before {
-  border-color: #bdbdbd;
-  background-color: #e0e0e0;
-}
-
-.checkbox:disabled + .checkboxLabel {
-  color: #bdbdbd;
-  cursor: not-allowed;
+  color: var(--text-color);
 }
 
 .completed {
   text-decoration: line-through;
-  color: #888;
+  color: var(--text-color);
+  opacity: 0.6;
 }
 
 .archived {
   font-style: italic;
-  color: #666;
+  color: var(--text-color);
+}
+
+.archived > *:not(.buttons) {
+  opacity: 0.6;
 }
 
 .buttons {
@@ -195,47 +126,51 @@
   transform: scale(1.1);
 }
 
-.archiveButton svg {
-  color: #ffc107;
+.archiveButton svg,
+.unarchiveButton svg {
+  color: var(--icon-color);
+  transition: color 0.3s ease;
 }
 
-.unarchiveButton svg {
-  color: #4caf50;
+.archiveButton:hover svg,
+.unarchiveButton:hover svg {
+  color: var(--icon-hover-color);
+  transition: color 0.3s ease;
 }
 
 .deleteButton svg {
-  color: #f44336;
+  color: var(--delete-button-background);
+  transition: color 0.3s ease;
+}
+
+.deleteButton:hover svg {
+  color: var(--delete-button-hover-background);
 }
 
 @media (max-width: 480px) {
+  .todoContent {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .checkboxLabel:before {
+    width: 20px;
+    height: 20px;
+  }
+
+  .checkboxLabel:after {
+    left: 7px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+  }
+
   .archiveButton svg,
   .unarchiveButton svg,
-  .deleteButton svg {
-    width: 14px;
-    height: 14px;
-  }
-}
-
-.deleteButton {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s;
-}
-
-.deleteButton:hover {
-  transform: scale(1.1);
-}
-
-.deleteButton svg {
-  color: #f44336;
-}
-
-@media (max-width: 480px) {
   .deleteButton svg {
     width: 14px;
     height: 14px;

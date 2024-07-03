@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styles from './ToDoItem.module.css'
-import DeleteIcon from '../../components/DeleteIcon'
-import ArchiveIcon from '../../components/ArchiveIcon'
-import UnarchiveIcon from '../../components/UnarchiveIcon'
+import DeleteIcon from '../../components/icons/DeleteIcon'
+import ArchiveIcon from '../../components/icons/ArchiveIcon'
+import UnarchiveIcon from '../../components/icons/UnarchiveIcon'
 
 interface ToDoItemProps {
   todo: {

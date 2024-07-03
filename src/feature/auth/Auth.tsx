@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { supabase } from '../../supabase'
 import styles from './Auth.module.css'
-import Loader from '../../components/Loader'
+import Loader from '../../components/Loader/Loader'
 
 const Auth: React.FC = () => {
   const [email, setEmail] = useState('')

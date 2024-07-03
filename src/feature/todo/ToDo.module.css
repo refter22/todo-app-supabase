@@ -3,7 +3,7 @@
   width: 100%;
   margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: var(--container-background);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   height: 80vh;
@@ -16,6 +16,7 @@
   margin-bottom: 20px;
   font-size: 28px;
   font-weight: 600;
+  color: var(--text-color);
 }
 
 .filters {
@@ -28,20 +29,20 @@
 .filters button {
   margin: 5px;
   padding: 8px 16px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
+  background-color: var(--button-background);
+  border: 1px solid var(--button-background);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s;
-  color: #333;
+  color: var(--button-color);
   font-size: 14px;
   font-weight: 500;
 }
 
 .activeFilter {
-  background-color: #2196f3 !important;
-  color: white !important;
-  border-color: #1976d2 !important;
+  background-color: var(--button-hover-background) !important;
+  color: var(--button-color) !important;
+  border-color: var(--button-hover-background) !important;
 }
 
 .todoList {
@@ -62,15 +63,12 @@
   align-items: center;
   margin-top: 20px;
   padding: 10px;
-  background-color: #f5f5f5;
-  border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .paginationButton {
-  background-color: #ffffff;
-  border: 1px solid #2196f3;
-  color: #2196f3;
+  background-color: var(--button-background);
+  border: 1px solid var(--button-background);
+  color: var(--button-color);
   padding: 8px 12px;
   margin: 0 5px;
   font-size: 14px;
@@ -80,8 +78,7 @@
 }
 
 .paginationButton:hover:not(:disabled) {
-  background-color: #2196f3;
-  color: #ffffff;
+  background-color: var(--button-hover-background);
 }
 
 .paginationButton:disabled {
@@ -92,7 +89,7 @@
 .pageInfo {
   font-size: 14px;
   margin: 0 10px;
-  color: #333;
+  color: var(--text-color);
 }
 
 @media (max-width: 480px) {
