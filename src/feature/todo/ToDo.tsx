@@ -147,17 +147,21 @@ const ToDo: React.FC = () => {
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 0}
+          className={styles.paginationButton}
+          aria-label='Предыдущая страница'
         >
-          Предыдущая
+          &#8592; Назад
         </button>
-        <span>
+        <span className={styles.pageInfo}>
           Страница {currentPage + 1} из {totalPages}
         </span>
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages - 1}
+          className={styles.paginationButton}
+          aria-label='Следующая страница'
         >
-          Следующая
+          Вперед &#8594;
         </button>
       </div>
     </div>

@@ -52,3 +52,14 @@
 .toggleButton:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+  .authContainer {
+    padding: 15px;
+  }
+
+  .input,
+  .button {
+    font-size: 14px;
+  }
+}

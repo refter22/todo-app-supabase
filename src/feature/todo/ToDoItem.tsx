@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import styles from './ToDoItem.module.css'
+import DeleteIcon from '../../components/DeleteIcon'
+import ArchiveIcon from '../../components/ArchiveIcon'
+import UnarchiveIcon from '../../components/UnarchiveIcon'
 
 interface ToDoItemProps {
   todo: {
@@ -36,7 +39,12 @@ class ToDoItem extends Component<ToDoItemProps> {
             checked={todo.completed}
             onChange={() => this.props.toggleTodo(todo.id, !todo.completed)}
             disabled={todo.archived}
+            onClick={(e) => e.stopPropagation()}
+            id={`todo-${todo.id}`}
           />
+          <label className={styles.checkboxLabel} htmlFor={`todo-${todo.id}`}>
+            <span className={styles.checkmark}></span>
+          </label>
           <span
             className={`${styles.text} ${
               todo.completed ? styles.completed : ''
@@ -53,8 +61,10 @@ class ToDoItem extends Component<ToDoItemProps> {
                 e.stopPropagation()
                 archiveTodo(todo.id)
               }}
+              aria-label='Архивировать задачу'
+              title='Архивировать задачу'
             >
-              Архивировать
+              <ArchiveIcon />
             </button>
           ) : (
             <button
@@ -63,8 +73,10 @@ class ToDoItem extends Component<ToDoItemProps> {
                 e.stopPropagation()
                 unarchiveTodo(todo.id)
               }}
+              aria-label='Разархивировать задачу'
+              title='Разархивировать задачу'
             >
-              Разархивировать
+              <UnarchiveIcon />
             </button>
           )}
           {todo.archived && (
@@ -74,8 +86,10 @@ class ToDoItem extends Component<ToDoItemProps> {
                 e.stopPropagation()
                 deleteTodo(todo.id)
               }}
+              aria-label='Удалить задачу'
+              title='Удалить задачу'
             >
-              Удалить
+              <DeleteIcon />
             </button>
           )}
         </div>
