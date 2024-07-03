@@ -1,0 +1,81 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: #e0e0e0;
+}
+
+.todoContent {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.checkbox {
+  margin-right: 15px;
+}
+
+.text {
+  font-size: 16px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.archived {
+  font-style: italic;
+  color: #666;
+}
+
+.buttons {
+  display: flex;
+}
+
+.archiveButton,
+.unarchiveButton,
+.deleteButton {
+  padding: 5px 10px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.archiveButton {
+  background-color: #ffc107;
+}
+
+.archiveButton:hover {
+  background-color: #ffa000;
+}
+
+.unarchiveButton {
+  background-color: #4caf50;
+}
+
+.unarchiveButton:hover {
+  background-color: #45a049;
+}
+
+.deleteButton {
+  background-color: #f44336;
+}
+
+.deleteButton:hover {
+  background-color: #d32f2f;
+}
